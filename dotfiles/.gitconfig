@@ -1,9 +1,25 @@
 [user]
-	name = Shunsuke Shiino
-	email = shunsuke.shiino@gmail.com
+	name = shiino-shunsuke
+	email = shiino.shunsuke@mountposition.co.jp
 [color]
 	ui = true
 [alias]
+        st = status -sb
+        di = diff
+        ci = commit -v
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
         histp = log --graph --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(black bold)%an, %ar%Creset'
 	logp = log -p --stat --pretty=format:\"%Cblue%h %Cgreen%ar %Cred%an %Creset%s %Cred%d\"
+	nffmerge = merge --no-ff
+[github]
+	user = shiino-shunsuke
+[core]
+	excludesfile = /Users/shiino.shunsuke/.gitconfig
+[merge]
+    keepBackup = false;
+    tool = p4merge
+[mergetool "p4merge"]
+    cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+    keepTemporaries = false
+    trustExitCode = false
+    keepBackup = false

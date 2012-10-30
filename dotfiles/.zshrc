@@ -1,6 +1,5 @@
-# export
-export LANG=ja_JP.UTF-8           # 日本語環境
-export EDITOR=emacs               # エディタはemacs
+# exportexport LANG=ja_JP.UTF-8           # 日本語環境
+export EDITOR=/usr/bin/vi
 export LESS='-R'
 export LESSOPEN='| /usr/local/Cellar/source-highlight/3.1.5/bin/src-hilite-lesspipe.sh %s'
 export LSCOLORS=gxfxcxdxbxegedabagacad
@@ -9,6 +8,9 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 export GREP_OPTIONS="--color=auto"
 
 # zsh
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{A-Z}={a-z}' # 大文字小文字を無視
+zstyle ':completion:*' format '%BCompleting %d%b'
+zstyle ':completion:*' group-name ''
 autoload -U compinit              # 強力な補完機能
 compinit -u                       # このあたりを使わないとzsh使ってる意味なし
 setopt autopushd	          # cdの履歴を表示
@@ -31,23 +33,17 @@ setopt EXTENDED_HISTORY           # zshの開始終了を記録
 setopt append_history             # 履歴を追記
 
 # alias
-alias p='ipython'
+alias emacs='/usr/local/bin/emacs -nw'
 alias ls='ls -G'
 alias gosh='/usr/local/Cellar/gauche/0.9.2/bin/gosh-rl'
+alias history='history -E 1'
+alias heroku='/usr/bin/heroku'
+alias top=/usr/local/Cellar/htop-osx/0.8.2/bin/htop
 
 # git
 alias git='/usr/local/Cellar/git/1.7.8.1/bin/git'
+alias g='/usr/local/Cellar/git/1.7.8.1/bin/git'
 source /usr/local/Cellar/git/1.7.8.1/etc/bash_completion.d/git-completion.bash
-
-# python
-source /Users/shun/.pythonbrew/etc/bashrc
-export VIRTUALENV_USE_DISTRIBUTE=true
-export WORKON_HOME=~/.virtualenvs
-export PIP_RESPECT_VIRTUALENV=true
-export PIP_REQUIRE_VIRTUALENV=true
-export PIP_VIRTUALENV_BASE=$WORKON_HOME
-export VIRTUALENVWRAPPER_PYTHON=~/.pythonbrew/pythons/Python-2.7.2/bin/python
-source ~/.pythonbrew/pythons/Python-2.7.2/bin/virtualenvwrapper.sh
 
 # prompt
 local GREEN=$'%{\e[1;32m%}'
@@ -59,7 +55,6 @@ setopt prompt_subst               # 便利なプロント
 bindkey -e                        # emacsライクなキーバインド
 
 # ruby
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-[[ -s "/Users/shun/.rvm/scripts/rvm" ]] && source "/Users/shun/.\
-rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
+export PATH="$HOME/.rbenv/bin:$PATH"
+alias be='/Users/shiino.shunsuke/.rbenv/shims/bundle exec'
+eval "$(rbenv init -)"
