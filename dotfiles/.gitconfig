@@ -3,9 +3,15 @@
 	email = shiino.shunsuke@mountposition.co.jp
 [color]
 	ui = true
+[push]
+	# push only the current branch
+	default = tracking
 [alias]
-        st = status -sb
-        di = diff
+	b = branch -a
+        s = status -sb
+        st = status
+        d = diff
+        dc = diff --cached
         ci = commit -v
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
         histp = log --graph --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(black bold)%an, %ar%Creset'
@@ -16,10 +22,11 @@
 [core]
 	excludesfile = /Users/shiino.shunsuke/.gitconfig
 [merge]
-    keepBackup = false;
-    tool = p4merge
+	keepBackup = false;
+	tool = p4merge
+	ff = false
 [mergetool "p4merge"]
-    cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
-    keepTemporaries = false
-    trustExitCode = false
-    keepBackup = false
+	cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+	keepTemporaries = false
+	trustExitCode = false
+	keepBackup = false

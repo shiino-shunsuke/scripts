@@ -58,3 +58,6 @@ bindkey -e                        # emacsライクなキーバインド
 export PATH="$HOME/.rbenv/bin:$PATH"
 alias be='/Users/shiino.shunsuke/.rbenv/shims/bundle exec'
 eval "$(rbenv init -)"
+
+# node
+source .nvm/nvm.sh
