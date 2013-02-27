@@ -1,16 +1,18 @@
 # exportexport LANG=ja_JP.UTF-8           # 日本語環境
 export EDITOR=/usr/bin/vi
 export LESS='-R'
-export LESSOPEN='| /usr/local/Cellar/source-highlight/3.1.5/bin/src-hilite-lesspipe.sh %s'
+export LESSOPEN='| /usr/local/bin/src-hilite-lesspipe.sh %s'
 export LSCOLORS=gxfxcxdxbxegedabagacad
 export LS_COLORS='di=36:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 export GREP_OPTIONS="--color=auto"
+export PATH=/usr/local/bin:$PATH
 
 # zsh
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{A-Z}={a-z}' # 大文字小文字を無視
 zstyle ':completion:*' format '%BCompleting %d%b'
 zstyle ':completion:*' group-name ''
+fpath=(~/.zsh/completion $fpath)
 autoload -U compinit              # 強力な補完機能
 compinit -u                       # このあたりを使わないとzsh使ってる意味なし
 setopt autopushd	          # cdの履歴を表示
@@ -35,15 +37,13 @@ setopt append_history             # 履歴を追記
 # alias
 alias emacs='/usr/local/bin/emacs -nw'
 alias ls='ls -G'
-alias gosh='/usr/local/Cellar/gauche/0.9.2/bin/gosh-rl'
 alias history='history -E 1'
 alias heroku='/usr/bin/heroku'
-alias top=/usr/local/Cellar/htop-osx/0.8.2/bin/htop
+alias top=htop
 
 # git
-alias git='/usr/local/Cellar/git/1.7.8.1/bin/git'
-alias g='/usr/local/Cellar/git/1.7.8.1/bin/git'
-source /usr/local/Cellar/git/1.7.8.1/etc/bash_completion.d/git-completion.bash
+alias g='/usr/local/bin/git'
+source /usr/local/etc/bash_completion.d/git-prompt.sh
 
 # prompt
 local GREEN=$'%{\e[1;32m%}'
@@ -60,4 +60,4 @@ alias be='/Users/shiino.shunsuke/.rbenv/shims/bundle exec'
 eval "$(rbenv init -)"
 
 # node
-source .nvm/nvm.sh
+source ~/.nvm/nvm.sh
