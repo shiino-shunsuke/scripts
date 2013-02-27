@@ -56,6 +56,7 @@ bindkey -e                        # emacsライクなキーバインド
 
 # ruby
 export PATH="$HOME/.rbenv/bin:$PATH"
+export SSL_CERT_FILE=/usr/local/share/ca-bundle.crt
 alias be='/Users/shiino.shunsuke/.rbenv/shims/bundle exec'
 eval "$(rbenv init -)"
 
